@@ -1,13 +1,6 @@
 pipeline {
   agent any
 
-  stages {
-    stage('Checkout') {
-      steps {
-        git 'https://github.com/pawaramit1423/Python_Jenkins.git'
-      }
-    }
-
     stage('Build and Package') {
       steps {
           sh "sudo apt install python3.10-venv -y"
