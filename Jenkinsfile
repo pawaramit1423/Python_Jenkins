@@ -10,7 +10,7 @@ pipeline {
           sh 'python setup.py install'
       }
     }
-
+  stages {
     stage('Deploy to Azure VM') {
       steps {
         script {
@@ -28,4 +28,4 @@ pipeline {
       }
     }
   }
-
+}
