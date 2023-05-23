@@ -1,6 +1,6 @@
 pipeline {
   agent any
-
+  stages {
     stage('Build and Package') {
       steps {
           sh "sudo apt install python3.10-venv -y"
@@ -10,7 +10,7 @@ pipeline {
           sh 'python setup.py install'
       }
     }
-  stages {
+
     stage('Deploy to Azure VM') {
       steps {
         script {
