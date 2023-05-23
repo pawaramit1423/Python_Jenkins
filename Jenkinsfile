@@ -25,7 +25,7 @@ pipeline {
           def azureVmUser = 'cicd'
           def azureVmAppDir = '/var/www/app'
 
-          sshagent(['your-ssh-credentials']) {
+          sshagent(['azurevmcicd']) {
             sh "scp -r . ${azureVmUser}@${azureVmIp}:${azureVmAppDir}"
             sh "ssh ${azureVmUser}@${azureVmIp} 'cd ${azureVmAppDir} && pip install -r requirements.txt'"
             sh "ssh ${azureVmUser}@${azureVmIp} 'cd ${azureVmAppDir} && python setup.py install'"
