@@ -10,8 +10,11 @@ pipeline {
 
     stage('Build and Package') {
       steps {
-        sh 'pip install -r requirements.txt'
-        sh 'python setup.py install'
+          sh "sudo apt install python3.10-venv -y"
+          sh "sudo apt install python3-pip -y"
+          sh "sudo apt install python3 -y"     
+          sh 'pip install -r requirements.txt'
+          sh 'python setup.py install'
       }
     }
 
@@ -26,6 +29,7 @@ pipeline {
             sh "scp -r . ${azureVmUser}@${azureVmIp}:${azureVmAppDir}"
             sh "ssh ${azureVmUser}@${azureVmIp} 'cd ${azureVmAppDir} && pip install -r requirements.txt'"
             sh "ssh ${azureVmUser}@${azureVmIp} 'cd ${azureVmAppDir} && python setup.py install'"
+            sh "ssh ${azureVmUser}@${azureVmIp} 'cd ${azureVmAppDir} && nohup python app.py > /dev/null 2>&1 &'"
           }
         }
       }
