@@ -4,7 +4,7 @@ pipeline {
   stages {
     stage('Checkout') {
       steps {
-        git 'https://github.com/your-repo.git'
+        git 'https://github.com/pawaramit1423/Python_Jenkins.git'
       }
     }
 
@@ -18,8 +18,8 @@ pipeline {
     stage('Deploy to Azure VM') {
       steps {
         script {
-          def azureVmIp = 'your-azure-vm-ip'
-          def azureVmUser = 'your-vm-username'
+          def azureVmIp = '20.40.49.192'
+          def azureVmUser = 'cicd'
           def azureVmAppDir = '/var/www/app'
 
           sshagent(['your-ssh-credentials']) {
